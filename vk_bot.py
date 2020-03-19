@@ -30,7 +30,8 @@ class VkBot:
             ["МУДРОСТЬ"],                           # 4
             ["АНЕКДОТИК"],                          # 5
             ["ЪУЪ"],                                # 6
-            ["МУЗЫЧКА"]                             # 7
+            ["МУЗЫЧКА"],                            # 7
+            ["GACHI"]
         ]
 
         self._ANSWER = [
@@ -104,6 +105,11 @@ class VkBot:
         elif theme == 7:
             music_id = f"audio{Library.Audio[random.randint(0, len(Library.Audio)-1)]}"
             return music_id
+
+        # Gachi
+        elif theme == 8:
+            gachi_id = f"video{Library.Gachi[random.randint(0, len(Library.Gachi)-1)]}"
+            return gachi_id
 
         else:
             return f"None"

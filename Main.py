@@ -29,36 +29,30 @@ vk = vk_api.VkApi(token=token)
 # Работа с сообщениями
 longpoll = VkLongPoll(vk)
 
-print("Mireska started")
 for event in longpoll.listen():
 
     if event.type == VkEventType.MESSAGE_NEW:
 
         if event.to_me:
 
-            print(f'New message from: {event.user_id}', end='')
-
             bot = VkBot(event.user_id)
 
             type = event.attachments.get("attach1_type")
 
-            #print(event.attachments)
-
             if event.text == "Картиночка":
-                print("---Photo---")
                 write_atmt(event.user_id, bot.new_message(event.text))
 
             elif event.text == "Музычка":
-                print("---Audio---")
                 write_atmt(event.user_id, bot.new_message(event.text))
 
             elif event.text == "Видосик":
-                print("---Video---")
                 write_atmt(event.user_id, bot.new_message(event.text))
+
+            elif event.text == "♂♂♂":
+                write_atmt(event.user_id, bot.new_message("Gachi"))
 
             elif event.text != "":
                 if bot.new_message(event.text):
-                    print("---Text---")
                     if bot.new_message(event.text) == "None":
                         stk = Library.Sticker[random.randint(0, len(Library.Sticker) - 1)]
                         write_atmt(event.user_id, stk)
@@ -66,9 +60,5 @@ for event in longpoll.listen():
                         write_msg(event.user_id, bot.new_message(event.text))
 
             else:
-                print(f"Type: {type}")
                 stk = Library.Sticker[random.randint(0, len(Library.Sticker)-1)]
                 write_atmt(event.user_id, stk)
-
-            print('Text: ', event.text)
-            print("-------------------")
