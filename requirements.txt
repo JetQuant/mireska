@@ -1,5 +1,4 @@
 vk_api
 random2
-requests
 bs4
-os
+requests
