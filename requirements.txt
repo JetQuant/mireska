@@ -1,5 +1,5 @@
 vk_api
-random 3.8.2
+random-3.8.2
 requests
 bs4
 os
